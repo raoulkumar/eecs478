@@ -1,0 +1,16 @@
+1. Functions Dependencies:
+
+* Left <- [Right]: Left function depends on the functions in Right
+
+Apply <- [Pos_coFactor, Neg_coFactor]
+Boolean_Diff <- [Apply, Pos_coFactor, Neg_coFactor]
+Sort_by_Influence <- [Boolean_Diff]
+
+All the functions follows canonically textbooks, and are taken into care to
+reduce the redundancies of the code.
+
+
+2. Probability Update Rule:
+
+(Parent's prob) = 0.5 * (left's prob) + 0.5 * (right's prob)
+

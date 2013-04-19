@@ -1,0 +1,383 @@
+.model pyongjoo_absmin5x3y
+
+.inputs x[0] x[1] y[0] y[1] 
+
+.outputs z[0] z[1] z[2] z[3] z[4] 
+
+.names y[0] ys1[0] ZERO 3y[0]
+100 1
+010 1
+001 1
+111 1
+
+.names y[1] ys1[1] c_yys1[0] 3y[1]
+100 1
+010 1
+001 1
+111 1
+
+.names y[2] ys1[2] c_yys1[1] 3y[2]
+100 1
+010 1
+001 1
+111 1
+
+.names y[3] ys1[3] c_yys1[2] 3y[3]
+100 1
+010 1
+001 1
+111 1
+
+.names y[4] ys1[4] c_yys1[3] 3y[4]
+100 1
+010 1
+001 1
+111 1
+
+.names x[0] xs2[0] ZERO 5x[0]
+100 1
+010 1
+001 1
+111 1
+
+.names x[1] xs2[1] c_xxs2[0] 5x[1]
+100 1
+010 1
+001 1
+111 1
+
+.names x[2] xs2[2] c_xxs2[1] 5x[2]
+100 1
+010 1
+001 1
+111 1
+
+.names x[3] xs2[3] c_xxs2[2] 5x[3]
+100 1
+010 1
+001 1
+111 1
+
+.names x[4] xs2[4] c_xxs2[3] 5x[4]
+100 1
+010 1
+001 1
+111 1
+
+.names ONE
+1
+
+.names ZERO
+
+.names 5x[0] inv_3y[0] ONE c_5xinv_3y[0]
+011 1
+101 1
+110 1
+111 1
+
+.names 5x[1] inv_3y[1] c_5xinv_3y[0] c_5xinv_3y[1]
+011 1
+101 1
+110 1
+111 1
+
+.names 5x[2] inv_3y[2] c_5xinv_3y[1] c_5xinv_3y[2]
+011 1
+101 1
+110 1
+111 1
+
+.names 5x[3] inv_3y[3] c_5xinv_3y[2] c_5xinv_3y[3]
+011 1
+101 1
+110 1
+111 1
+
+.names 5x[4] inv_3y[4] c_5xinv_3y[3] c_5xinv_3y[4]
+011 1
+101 1
+110 1
+111 1
+
+.names x[0] xs2[0] ZERO c_xxs2[0]
+011 1
+101 1
+110 1
+111 1
+
+.names x[1] xs2[1] c_xxs2[0] c_xxs2[1]
+011 1
+101 1
+110 1
+111 1
+
+.names x[2] xs2[2] c_xxs2[1] c_xxs2[2]
+011 1
+101 1
+110 1
+111 1
+
+.names x[3] xs2[3] c_xxs2[2] c_xxs2[3]
+011 1
+101 1
+110 1
+111 1
+
+.names x[4] xs2[4] c_xxs2[3] c_xxs2[4]
+011 1
+101 1
+110 1
+111 1
+
+.names y[0] ys1[0] ZERO c_yys1[0]
+011 1
+101 1
+110 1
+111 1
+
+.names y[1] ys1[1] c_yys1[0] c_yys1[1]
+011 1
+101 1
+110 1
+111 1
+
+.names y[2] ys1[2] c_yys1[1] c_yys1[2]
+011 1
+101 1
+110 1
+111 1
+
+.names y[3] ys1[3] c_yys1[2] c_yys1[3]
+011 1
+101 1
+110 1
+111 1
+
+.names y[4] ys1[4] c_yys1[3] c_yys1[4]
+011 1
+101 1
+110 1
+111 1
+
+.names zeros[0] inv_min[0] ONE c_zerosinv_min[0]
+011 1
+101 1
+110 1
+111 1
+
+.names zeros[1] inv_min[1] c_zerosinv_min[0] c_zerosinv_min[1]
+011 1
+101 1
+110 1
+111 1
+
+.names zeros[2] inv_min[2] c_zerosinv_min[1] c_zerosinv_min[2]
+011 1
+101 1
+110 1
+111 1
+
+.names zeros[3] inv_min[3] c_zerosinv_min[2] c_zerosinv_min[3]
+011 1
+101 1
+110 1
+111 1
+
+.names zeros[4] inv_min[4] c_zerosinv_min[3] c_zerosinv_min[4]
+011 1
+101 1
+110 1
+111 1
+
+.names zeros[0] inv_min[0] ONE comp_min[0]
+100 1
+010 1
+001 1
+111 1
+
+.names zeros[1] inv_min[1] c_zerosinv_min[0] comp_min[1]
+100 1
+010 1
+001 1
+111 1
+
+.names zeros[2] inv_min[2] c_zerosinv_min[1] comp_min[2]
+100 1
+010 1
+001 1
+111 1
+
+.names zeros[3] inv_min[3] c_zerosinv_min[2] comp_min[3]
+100 1
+010 1
+001 1
+111 1
+
+.names zeros[4] inv_min[4] c_zerosinv_min[3] comp_min[4]
+100 1
+010 1
+001 1
+111 1
+
+.names 3y[0] inv_3y[0]
+0 1
+
+.names 3y[1] inv_3y[1]
+0 1
+
+.names 3y[2] inv_3y[2]
+0 1
+
+.names 3y[3] inv_3y[3]
+0 1
+
+.names 3y[4] inv_3y[4]
+0 1
+
+.names min[0] inv_min[0]
+0 1
+
+.names min[1] inv_min[1]
+0 1
+
+.names min[2] inv_min[2]
+0 1
+
+.names min[3] inv_min[3]
+0 1
+
+.names min[4] inv_min[4]
+0 1
+
+.names 5x[0] 3y[0] p_5x3y[4] min[0]
+1-1 1
+-10 1
+
+.names 5x[1] 3y[1] p_5x3y[4] min[1]
+1-1 1
+-10 1
+
+.names 5x[2] 3y[2] p_5x3y[4] min[2]
+1-1 1
+-10 1
+
+.names 5x[3] 3y[3] p_5x3y[4] min[3]
+1-1 1
+-10 1
+
+.names 5x[4] 3y[4] p_5x3y[4] min[4]
+1-1 1
+-10 1
+
+.names c_zerosinv_min[4] not_used
+1 1
+
+.names 5x[0] inv_3y[0] ONE p_5x3y[0]
+100 1
+010 1
+001 1
+111 1
+
+.names 5x[1] inv_3y[1] c_5xinv_3y[0] p_5x3y[1]
+100 1
+010 1
+001 1
+111 1
+
+.names 5x[2] inv_3y[2] c_5xinv_3y[1] p_5x3y[2]
+100 1
+010 1
+001 1
+111 1
+
+.names 5x[3] inv_3y[3] c_5xinv_3y[2] p_5x3y[3]
+100 1
+010 1
+001 1
+111 1
+
+.names 5x[4] inv_3y[4] c_5xinv_3y[3] p_5x3y[4]
+100 1
+010 1
+001 1
+111 1
+
+.names x[1] x[2]
+1 1
+
+.names x[1] x[3]
+1 1
+
+.names x[1] x[4]
+1 1
+
+.names ZERO xs2[0]
+1 1
+
+.names ZERO xs2[1]
+1 1
+
+.names x[0] xs2[2]
+1 1
+
+.names x[1] xs2[3]
+1 1
+
+.names xs2[3] xs2[4]
+1 1
+
+.names y[1] y[2]
+1 1
+
+.names y[1] y[3]
+1 1
+
+.names y[1] y[4]
+1 1
+
+.names ZERO ys1[0]
+1 1
+
+.names y[0] ys1[1]
+1 1
+
+.names y[1] ys1[2]
+1 1
+
+.names ys1[2] ys1[3]
+1 1
+
+.names ys1[2] ys1[4]
+1 1
+
+.names min[0] comp_min[0] min[4] z[0]
+1-1 1
+-10 1
+
+.names min[1] comp_min[1] min[4] z[1]
+1-1 1
+-10 1
+
+.names min[2] comp_min[2] min[4] z[2]
+1-1 1
+-10 1
+
+.names min[3] comp_min[3] min[4] z[3]
+1-1 1
+-10 1
+
+.names min[4] comp_min[4] min[4] z[4]
+1-1 1
+-10 1
+
+.names zeros[0]
+
+.names zeros[1]
+
+.names zeros[2]
+
+.names zeros[3]
+
+.names zeros[4]
+
+.end

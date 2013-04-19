@@ -1,0 +1,94 @@
+yongjoo-mac:abc70930 $ cat problem2_b_1.blif 
+.model prob_2_1
+
+.inputs a b c d e f
+
+.outputs z1 z2
+
+.names b c k1
+00 1
+01 1
+10 1
+
+.names k1 k2
+0 1
+
+.names k2 d k3
+00 1
+01 1
+10 1
+
+.names k1 d e k4
+000 1
+001 1
+010 1
+011 1
+100 1
+101 1
+110 1
+
+.names k3 k4 f z1
+000 1
+001 1
+010 1
+011 1
+100 1
+101 1
+110 1
+
+.names a b c z2
+000 1
+001 1
+010 1
+011 1
+100 1
+101 1
+110 1
+
+.end
+
+yongjoo-mac:abc70930 $ cat problem2_b_2.blif 
+.model prob_2_1
+
+.inputs a b c d e f
+
+.outputs z1 z2
+
+.names b c d k1
+000 1
+001 1
+010 1
+011 1
+100 1
+101 1
+110 1
+
+.names d e k2
+00 1
+01 1
+10 1
+
+.names k1 k2 f z1
+000 1
+001 1
+010 1
+011 1
+100 1
+101 1
+110 1
+
+.names a b c z2
+000 1
+001 1
+010 1
+011 1
+100 1
+101 1
+110 1
+
+.end
+
+yongjoo-mac:abc70930 $ ./abc
+UC Berkeley, ABC 1.01 (compiled Mar 30 2013 22:54:03)
+abc 01> cec ./problem2_b_1.blif ./problem2_b_2.blif 
+Networks are equivalent.

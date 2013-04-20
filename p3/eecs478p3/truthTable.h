@@ -46,9 +46,9 @@ class TruthTable
     // adds an emtry (row) to the truth table
     int addEntry(const string &newEntry);
 
-    int isCovered(const string &entry);
+    int isCovered(const vector<truthType> &entry);
 
-    int isCoveredBy(const vector<truthType> &have, const string &target);
+    int isCoveredBy(const vector<truthType> &have, const vector<truthType> &target);
     
     // returns the number of entries (rows)
     unsigned getNumEntries();

@@ -38,8 +38,17 @@ int TruthTable::addEntry(const string &newEntry)
   return 0;
 }
 
-int TruthTable::isCovered(const string &entry)
+int TruthTable::isCovered(const vector<truthType> &entry)
 {
+    // Debug
+    //cout << "isCovered input size: " << entry.size() << endl;
+    //for (unsigned i = 0; i < entry.size(); i++) {
+    //    cout << entry[i] << " ";
+    //}
+    //cout << endl;
+
+    // For each truth table entry, we check if it covers the given input
+    // combination.
     for (unsigned i = 0; i < logic.size(); i++) {
         const vector<truthType> &have = logic[i];
 
@@ -51,18 +60,16 @@ int TruthTable::isCovered(const string &entry)
 }
 
 
-int TruthTable::isCoveredBy(const vector<truthType> &have, const string &target)
+int TruthTable::isCoveredBy(const vector<truthType> &have, const vector<truthType> &target)
 {
-    if (have.size() != target.length()) {
+    if (have.size() != target.size()) {
         return 0;
     }
 
     for (unsigned i = 0; i < have.size(); i++) {
         if (have[i] == DC)
             continue;
-        else if (have[i] == ZERO && target[i] == '0')
-            continue;
-        else if (have[i] == ONE && target[i] == '1')
+        else if (have[i] == target[i])
             continue;
         else
             return 0;

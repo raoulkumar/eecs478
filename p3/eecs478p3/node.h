@@ -24,8 +24,43 @@ class Node
     nodeType type;
     vector<Node*> fanin;
     TruthTable tt;
+
+    // Added by me; value to store a simulated results
+    truthType sim_value;
     
   public:
+
+    // Added by me; read the values of fanin nodes, and set the value of this
+    // node.
+    void simulate() {
+        vector<truthType> inputs;
+
+        // Debug
+        //cout << "fanin size: " << fanin.size() << endl;
+
+        for (unsigned int i = 0; i < fanin.size(); i++) {
+            const Node* node = fanin[i];
+            inputs.push_back(node->sim_value);
+        }
+
+        //cout << "input size: " << inputs.size() << endl;
+
+        if (tt.isCovered(inputs))
+            sim_value = ONE;
+        else
+            sim_value = ZERO;
+    }
+
+    // Added by me; set simulated value.
+    void setSimValue(truthType value) {
+        sim_value = value;
+    }
+
+    truthType getSimValue() {
+        return sim_value;
+    }
+
+
     // constructors
     Node():type(INTERNAL) {}
     

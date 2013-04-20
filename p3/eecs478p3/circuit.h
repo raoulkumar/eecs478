@@ -11,6 +11,7 @@
 #include <assert.h>
 #include <stack>
 #include <queue>
+#include <set>
 
 using namespace std;
 
@@ -24,6 +25,13 @@ class Circuit
     string name;
     
   public:
+    // Added by me.
+    void simulate();
+
+    void topologicalSort(vector<string> &order);
+    void topologicalVisit(set<Node*> &nodes, Node* n, vector<string> &order);
+
+
     // constructors
     Circuit() {};
     

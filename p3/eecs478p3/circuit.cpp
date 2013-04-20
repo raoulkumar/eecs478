@@ -1,4 +1,56 @@
 #include "circuit.h"
+#include <set>
+
+using namespace std;
+
+
+void Circuit::simulate() {
+
+}
+
+void Circuit::topologicalSort(vector<string> &order) {
+    set<Node*> nodes;
+
+    for (mapIter it = nodeMap.begin(); it != nodeMap.end(); it++)
+    {
+        Node* n = it->second;
+        n->marker = 0;      // init the marker
+        nodes.insert(n);
+
+        //cout << "node read: " << n->name << endl;
+    }
+
+    while (nodes.size()) {      // Loop while there are unmarked nodes.
+        Node* n = *(nodes.begin());
+        topologicalVisit(nodes, n, order);
+
+        //cout << "main loop called for " << n->name << endl;
+    }
+}
+
+void Circuit::topologicalVisit(set<Node*> &nodes, Node* n, vector<string> &order) {
+    if (n->marker == 2) {
+        cout << "cycle detected. program terminates." << endl;
+        exit(-1);
+    }
+
+    if (n->marker == 1)     // if permanently marked, do not visit.
+        return;
+
+    n->marker = 2;      // mark n temporarily.
+
+    for (unsigned int i = 0; i < n->fanin.size(); i++) {    // for each parent
+        Node* m = n->fanin[i];
+        topologicalVisit(nodes, m, order);
+
+        //cout << "for output node: " << n->name << " parent node: " << m->name << endl;
+    }
+
+    n->marker = 1;  // mark n permanently.
+    nodes.erase(n);
+
+    order.push_back(n->name);
+}
 
 /******************Circuit Implementation********************/
 

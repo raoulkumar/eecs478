@@ -27,7 +27,10 @@ class Node
 
     // Added by me; value to store a simulated results
     truthType sim_value;
-    
+
+    // Added by me; used for topological sort
+    int marker;
+
   public:
 
     // Added by me; read the values of fanin nodes, and set the value of this

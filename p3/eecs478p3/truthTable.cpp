@@ -38,6 +38,40 @@ int TruthTable::addEntry(const string &newEntry)
   return 0;
 }
 
+int TruthTable::isCovered(const string &entry)
+{
+    for (unsigned i = 0; i < logic.size(); i++) {
+        const vector<truthType> &have = logic[i];
+
+        if (isCoveredBy(have, entry))   // return True if covered by any of the entries
+            return 1;
+    }
+
+    return 0;
+}
+
+
+int TruthTable::isCoveredBy(const vector<truthType> &have, const string &target)
+{
+    if (have.size() != target.length()) {
+        return 0;
+    }
+
+    for (unsigned i = 0; i < have.size(); i++) {
+        if (have[i] == DC)
+            continue;
+        else if (have[i] == ZERO && target[i] == '0')
+            continue;
+        else if (have[i] == ONE && target[i] == '1')
+            continue;
+        else
+            return 0;
+    }
+
+    return 1;
+}
+
+
 unsigned TruthTable::getNumEntries()
 {
   return logic.size();

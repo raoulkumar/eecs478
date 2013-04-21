@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    Circuit c("my_adder2.blif");
+    Circuit c("top_test.blif");
 
     vector<string> order;
 

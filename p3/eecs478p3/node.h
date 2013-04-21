@@ -36,22 +36,32 @@ class Node
     // Added by me; read the values of fanin nodes, and set the value of this
     // node.
     void simulate() {
-        vector<truthType> inputs;
-
         // Debug
         //cout << "fanin size: " << fanin.size() << endl;
 
-        for (unsigned int i = 0; i < fanin.size(); i++) {
-            const Node* node = fanin[i];
-            inputs.push_back(node->sim_value);
-        }
-
-        //cout << "input size: " << inputs.size() << endl;
-
-        if (tt.isCovered(inputs))
-            sim_value = ONE;
-        else
+        // must explicitly write 0 node
+        if (type == ZERO_NODE) {
             sim_value = ZERO;
+        }
+        // must explicitly write 1 node
+        else if (type == ONE_NODE) {
+            sim_value = ONE;
+        }
+        // otherwise, we should compute the output values
+        else if (type != PRIMARY_INPUT) {
+            // compose input vector
+            vector<truthType> inputs;
+
+            for (unsigned int i = 0; i < fanin.size(); i++) {
+                const Node* node = fanin[i];
+                inputs.push_back(node->sim_value);
+            }
+
+            if (tt.isCovered(inputs))
+                sim_value = ONE;
+            else
+                sim_value = ZERO;
+        }
     }
 
     // Added by me; set simulated value.

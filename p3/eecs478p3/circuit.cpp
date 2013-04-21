@@ -1,13 +1,64 @@
 #include "circuit.h"
 #include <set>
+#include <vector>
+#include <string>
+#include "truthTable.h"
 
 using namespace std;
 
 
-void Circuit::simulate() {
+void Circuit::simulate(vector<vector<string> > &init_values, vector<vector<string> > &out_values)
+{
+    // initialize the values of the nodes mentioned in the input file. The
+    // values of the nodes are not determined at this time.
+    for (unsigned int i = 0; i < init_values.size(); i++) {
+        vector<string> &pair = init_values[i];
+        const string name = pair[0];
+        const string value_str = pair[1];
 
+        int value;
+        istringstream ss(value_str);
+        ss >> value;
+
+        Node* node = findNode(name);
+        assert(node != NULL);
+        node->setSimValue((truthType) value);
+    }
+
+    // find the topological order and do simulation in the order.
+    vector<string> order;
+    topologicalSort(order);
+
+    for (unsigned int i = 0; i < order.size(); i++) {
+        string name = order[i];
+        Node* node = findNode(name);
+        assert(node != NULL);
+        node->simulate();
+    }
+
+    // print the output values.
+    //cout << "*** Outputs:";
+    for (mapIter it = nodeMap.begin(); it != nodeMap.end(); it++)
+    {
+        vector<string> pair;
+
+        if (it->second->type == PRIMARY_OUTPUT) {
+            pair.push_back(it->second->name);
+            stringstream ss;
+            ss << it->second->getSimValue();
+            pair.push_back(ss.str());
+
+            out_values.push_back(pair);
+        }
+    }
 }
 
+// I used the algorithm introduced at
+// http://en.wikipedia.org/wiki/Topological_sorting#Algorithms
+// This is the same algorithm in Cormen.
+//
+// marker is either 0 (init), 1 (permanently marked), or 2 (temporarily
+// marked).
 void Circuit::topologicalSort(vector<string> &order) {
     set<Node*> nodes;
 

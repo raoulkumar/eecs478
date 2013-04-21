@@ -26,8 +26,11 @@ class Circuit
     
   public:
     // Added by me.
-    void simulate();
+    void simulate(vector<vector<string> > &init_values, vector<vector<string> > &out_values);
 
+    // nodes names that are topologically sorted are pushed bach into the vector
+    // 'order'. The method does NOT perform any cleaning before inserting the
+    // names.
     void topologicalSort(vector<string> &order);
     void topologicalVisit(set<Node*> &nodes, Node* n, vector<string> &order);
 

@@ -2,10 +2,16 @@
 #include <math.h>
 
 #include <utility>
+#include <string>
+#include <vector>
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
 void usage(const char* exename);
+void parseinput(const char* filename, vector<vector<string> > &inputs);
+void printoutput(const vector<vector<string> > &outputs);
 
 int main(int argc, char **argv)
 {
@@ -30,7 +36,14 @@ int main(int argc, char **argv)
         Circuit c(inFilename);
 
         // your code here
-        c.print();
+        vector<string> order;
+
+        c.topologicalSort(order);
+
+        cout << "*** Topological order:" << endl;
+        for (unsigned int i = 0; i < order.size(); i++)
+            cout << order[i] << " ";
+        cout << endl;
       }
       else
       {
@@ -47,6 +60,12 @@ int main(int argc, char **argv)
         string inputFile(argv[++i]);
 
         // your code here
+        vector<vector<string> > init_values;
+        vector<vector<string> > out_values;
+
+        parseinput(inputFile.c_str(), init_values);
+        c.simulate(init_values, out_values);
+        printoutput(out_values);
       }
       else
       {
@@ -70,4 +89,38 @@ void usage(const char* exename)
   
   exit(0);
 }
+
+
+void parseinput(const char* filename, vector<vector<string> > &inputs)
+{
+    ifstream infile(filename);
+
+    string name, value;
+    while (infile >> name >> value) {
+        vector<string> pair;
+        pair.push_back(name);
+        pair.push_back(value);
+        inputs.push_back(pair);
+    }
+}
+
+
+void printoutput(const vector<vector<string> > &out_values)
+{
+    cout << "*** Outputs:" << endl;
+
+    unsigned int i;
+    for (i = 0; i < out_values.size()-1; i++) {
+        const vector<string> &pair = out_values[i];
+        assert(pair.size() == 2);
+        cout << pair[0] << " = " << pair[1] << ", ";
+    }
+
+    // last one does not pring comma after
+    const vector<string> &pair = out_values[i];
+    cout << pair[0] << " = " << pair[1];
+
+    cout << endl;
+}
+
 

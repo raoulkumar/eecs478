@@ -10,8 +10,8 @@ TOP = truthTable.cpp circuit.cpp topological.cpp
 
 all: 
 	g++ -O3 -Wall -lm -g -o project3 ${FILES}
-	g++ -O3 -Wall -lm -g -o sim $(SIM)
-	g++ -O3 -Wall -lm -g -o top $(TOP)
+	#g++ -O3 -Wall -lm -g -o sim $(SIM)
+	#g++ -O3 -Wall -lm -g -o top $(TOP)
 
 backup:
 	cp -rf *.c *.h Makefile backup/*

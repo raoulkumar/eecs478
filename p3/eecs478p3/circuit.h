@@ -26,6 +26,13 @@ class Circuit
     
   public:
     // Added by me.
+    // Perform simulation of the circuit, given the input values as specified in
+    // the vector init_values. The values for the input nodes that are not
+    // specified in the input vector are undetermined.
+    // The simulated results are pushed bach to out_values. The user of this
+    // method must create the output vector, and pass it to the function. The
+    // method does not perform any cleaning beforing inserting values into the
+    // vector, so caution may be needed.
     void simulate(vector<vector<string> > &init_values, vector<vector<string> > &out_values);
 
     // nodes names that are topologically sorted are pushed bach into the vector

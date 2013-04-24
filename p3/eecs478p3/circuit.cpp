@@ -36,8 +36,7 @@ void Circuit::simulate(vector<vector<string> > &init_values, vector<vector<strin
         node->simulate();
     }
 
-    // print the output values.
-    //cout << "*** Outputs:";
+    // push the simulated results.
     for (mapIter it = nodeMap.begin(); it != nodeMap.end(); it++)
     {
         vector<string> pair;
@@ -226,7 +225,7 @@ int Circuit::print()
 
 int Circuit::readBLIF(const string &filename)
 {
-  cout << "reading file " << filename << "..." << endl;
+  //cout << "reading file " << filename << "..." << endl;
   ifstream inFile(filename.c_str());
   if (!inFile.good())
   {
@@ -386,7 +385,7 @@ int Circuit::readBLIF(const string &filename)
     }
   }
   
-  cout << "file " << filename << " successfully read." << endl;
+  //cout << "file " << filename << " successfully read." << endl;
   inFile.close();
   return 0;
 }
